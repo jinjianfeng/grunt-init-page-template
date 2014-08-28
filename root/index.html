@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="yes" name="apple-touch-fullscreen" />
+    <meta content="author" name="{%=author_name%}"/>
+    <meta content="{{spm['A']}}" name="data-spm"/>
+    <meta content="plugins" name="mt"/>
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <script src="http://g.tbcdn.cn/mtb/lib-tbm/0.1.4/tbm.js"></script>
+    <link href="http://g.tbcdn.cn/mtb/lib-tbm/0.1.4/tbm.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="src/index.css"/>
+    <title>{{pageTitle}}</title>
+</head>
+<body data-spm="{{spm['B']}}">
+    <!-- body  -->
+	
+
+
+
+    
+    <!-- end body -->
+    <script mt>
+       //mt数据，本地测试数据写入data中，push到mt后会做处理
+        var data = { 
+            
+        }
+    </script>
+    <script type="text/mt">
+        var data = {{utils.getJSONStr(data)}}
+    </script>
+    <script src="src/index.js"></script>
+</body>
+</html>
+
