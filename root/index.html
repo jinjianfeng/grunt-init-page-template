@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="yes" name="apple-touch-fullscreen" />
+    <meta content="author" name="{%=author_name%}"/>
+    <meta content="{{spm['A']}}" name="data-spm"/>
+    <meta content="plugins" name="mt"/>
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <script src="http://g.tbcdn.cn/mtb/lib-tbm/0.1.4/tbm.js"></script>
+    <link href="http://g.tbcdn.cn/mtb/lib-tbm/0.1.4/tbm.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="src/index.css"/>
+    <title>{{pageTitle}}</title>
+</head>
+<body data-spm="{{spm['B']}}">
+
+    <script type="text/javascript" class="J_WillRemoveAtBuild">
+    //这段代码在build后会去除，还原成mt平台所需要的，并且方便页面在本地调试
+    document.querySelector("body").setAttribute("data-spm","testSpmB");var metas=document.querySelectorAll("meta");[].forEach.call(metas,function(a){"data-spm"==a.getAttribute("name")&&a.setAttribute("content","testSpmA")});
+    //一下为spm埋点代码，同样会在build后去除
+with(document)with(body)with(insertBefore(createElement("script"),firstChild))setAttribute("exparams","req_url=http%3a%2f%2fh5%2em%2etaobao%2ecom%2fchannel%2fact%2fintegrated%2fnvzhuang%2ehtml&amp;category=&amp;userid=&amp;b2c_orid=&amp;b2c_auction=&amp;at_isb=&amp;atp_isdpp=&amp;at_ssid=&amp;bbid=&amp;aplus&amp;at_cart=&amp;at_udid=&asid=AAAh9xBUGJ+6thoh1Ns=",id="tb-beacon-aplus",src=(location>"https"?"//s":"//a")+".tbcdn.cn/s/aplus_wap.js");
+   </script>
+    <!-- body  -->
+	
+        
+
+
+
+    
+    <!-- end body -->
+   
+    <script src="assets/tmpData.js" class="J_WillRemoveAtBuild"></script>
+    <script type="text/mt">
+        var pageData = {{utils.getJSONStr(data)}}
+    </script>
+    <script type="text/javascript" src="build/template.contact.js"></script>
+    <script type="text/javascript" src="src/index.js"></script>
+</body>
+</html>
+
