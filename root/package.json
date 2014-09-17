@@ -3,6 +3,9 @@
   "description": "{%= description%}",
   "version": "{%= version%}",
   "homepage": "",
+  "mt" : {
+    "type" : "template"
+  },
   "author": {
     "name": "{%= author_name%}",
     "email": "{%= authro_email%}"
@@ -31,11 +34,8 @@
     "grunt-contrib-less": "~0.6.4",
     "grunt-contrib-uglify": "~0.2.0",
     "grunt-contrib-watch": "~0.4.0",
-    "grunt-depcombo": "~0.1.0",
-    "grunt-depconcat": "~0.2.0",
     "grunt-micro-based-template": "~0.1.0",
-    "grunt-html-handle-plugin": "~0.1.0",
-    "grunt-rem-css": "~0.1.0"
+    "grunt-packset": "~0.1.0"
   },
   "dependencies": {
     "uglify-js": "^2.4.15"

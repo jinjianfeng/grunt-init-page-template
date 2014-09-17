@@ -3,22 +3,24 @@
 function runTask(grunt) {
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
-		name: '{%= name %}',
+		name: 'mtTemplate',
 		srcPath: 'src',
 		assetsPath: 'assets',
 		buildPath: 'build',
 		destPath: 'dest',
 
 		copy: {
-			package: {
+			main: {
 				files: [{
 					expand: true,
-					cwd: './',
-					src: ['package.json'],
-					dest: '<%= destPath %>'
+					cwd: '<%=srcPath%>',
+					src: ['*.js','.css'],
+					dest:  '_temp'
+
 				}]
 			}
 		},
+
 
 		uglify: {
 			main: {
@@ -52,8 +54,8 @@ function runTask(grunt) {
 				separator: ';',
 			},
 			dist: {
-				src: ['tmp/*.js'],
-				dest: 'build/template.contact.js',
+				src: ['template/*.js'],
+				dest: '_temp/template.contact.js',
 			}
 		},
 		//编译template目录中的模板文件
@@ -64,18 +66,19 @@ function runTask(grunt) {
 			build: {
 				expand: true,
 				cwd: 'template',
-				src: '*',
-				dest: 'tmp',
-				ext: '.tpl.js'
+				src: '*.tpl',
+				dest: 'template',
+				ext: '.compilerTpl.js'
 			}
 		},
 		//编译js和css到html代码
 		comboall: {
-			options: {},
+			options: {
+			},
 			main: {
 				files: [{
 					expand: true,
-					cwd: '',
+					cwd: '_temp',
 					src: '*.html',
 					dest: 'dest',
 					ext: '.combo.html'
@@ -93,13 +96,13 @@ function runTask(grunt) {
 					expand: true,
 					cwd: '',
 					src: '*.html',
-					dest: 'tmp',
+					dest: '_temp',
 					ext: '.html'
 				}]
 			}
 		},
 		//处理css 成rem
-		rem_css:{
+		rem_css: {
 			options: {
 				banner: ''
 			},
@@ -108,10 +111,37 @@ function runTask(grunt) {
 					expand: true,
 					cwd: 'src',
 					src: '*.css',
-					dest: 'tmp',
+					dest: '_temp',
 					ext: '.css'
 				}]
 			}
+		},
+
+		packset: {
+			options: {
+				banner: '',
+				htmlExt:['.html','.htm'],
+				cssExt:['.css','.less']
+			},
+			html: {
+				files: [{
+					expand: true,
+					cwd: '',
+					src: '*.html',
+					dest: '_temp',
+					ext: '.html'
+				}]
+			},
+			css: {
+				files: [{
+					expand: true,
+					cwd: 'src',
+					src: '*.css',
+					dest: '_temp',
+					ext: '.css'
+				}]
+			}
+
 		},
 
 		watch: {
@@ -120,11 +150,16 @@ function runTask(grunt) {
 				tasks: ['copy:package']
 			},
 
+
 			js: {
 				files: ['<%= srcPath %>/*.js', '<%= srcPath %>/**/*.js'],
 				tasks: ['uglify:main']
 			},
 
+			pack:{
+				files: ['<%= srcPath %>/*.css'],
+				tasks: ['packset:css']
+			},
 			css: {
 				files: ['<%= srcPath %>/*.css'],
 				tasks: ['cssmin:main']
@@ -132,6 +167,7 @@ function runTask(grunt) {
 		}
 
 	});
+
 
 
 	grunt.loadNpmTasks('grunt-contrib-copy');
@@ -142,13 +178,15 @@ function runTask(grunt) {
 
 	grunt.loadNpmTasks('grunt-combo-html-css-js');
 	grunt.loadNpmTasks('grunt-micro-based-template');
-	grunt.loadNpmTasks('grunt-rem-css');
-	grunt.loadNpmTasks('grunt-html-handle-plugin');
+	//grunt 打包
+	grunt.loadNpmTasks('grunt-packset');
 
-	grunt.registerTask('cssRem',['rem_css']);
-	grunt.registerTask('htmlHandle',['html_handle']);
 
-	grunt.registerTask('dest', ['copy', 'micro_template', 'concat', 'uglify', 'cssmin', 'comboall']);
+	grunt.registerTask('dest',['micro_template','concat'])
+	grunt.registerTask('pack', ['packset:html','packset:css']);
+
+	grunt.registerTask('template',['micro_template','concat']);
+	grunt.registerTask('dest', ['template','copy','pack','comboall']);
 	grunt.registerTask('default', ['dest']);
 
 };
