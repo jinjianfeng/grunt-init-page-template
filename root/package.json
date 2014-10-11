@@ -4,17 +4,18 @@
   "version": "{%= version%}",
   "homepage": "",
   "mt": {
-    "type": "template"
-  },
-  "schema": {
-    "required": false, //标识字段
-    "type": "object", //标识字段
-    "description": "", //标识字段
-    "key": "", //标识字段
-    "format": [ //数据结构定义
+    "type": "template",
+    "schema": {
+      "required": false,
+      "type": "object",
+      "description": "",
+      "key": "",
+      "format": [
 
-    ]
+      ]
+    },
   },
+
   "author": {
     "name": "{%= author_name%}",
     "email": "{%= authro_email%}"
