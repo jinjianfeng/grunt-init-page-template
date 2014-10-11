@@ -3,8 +3,17 @@
   "description": "{%= description%}",
   "version": "{%= version%}",
   "homepage": "",
-  "mt" : {
-    "type" : "template"
+  "mt": {
+    "type": "template"
+  },
+  "schema": {
+    "required": false, //标识字段
+    "type": "object", //标识字段
+    "description": "", //标识字段
+    "key": "", //标识字段
+    "format": [ //数据结构定义
+
+    ]
   },
   "author": {
     "name": "{%= author_name%}",
@@ -14,12 +23,10 @@
     "type": "git",
     "url": "{%= repository%}"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "/blob/master/LICENSE-MIT"
-    }
-  ],
+  "licenses": [{
+    "type": "MIT",
+    "url": "/blob/master/LICENSE-MIT"
+  }],
   "engines": {
     "node": ">= 0.8.0"
   },
